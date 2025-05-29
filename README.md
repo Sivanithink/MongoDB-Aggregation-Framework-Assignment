@@ -54,6 +54,7 @@ db.products.aggregate([
   supplier: { name: 'GadgetPro', location: 'China' }
 }
 
+```
 
 
 ## 2. Count Products per Category
@@ -72,4 +73,87 @@ db.products.aggregate([
     }
   }
 ]);
+{
+  _id: 'Sports',
+  totalProducts: 1
+}
+{
+  _id: 'Electronics',
+  totalProducts: 5
+}
+{
+  _id: 'Accessories',
+  totalProducts: 1
+}
+{
+  _id: 'Apparel',
+  totalProducts: 2
+}
+{
+  _id: 'Home Goods',
+  totalProducts: 1
+}
+```
+## 3. Product Names and Prices, Sorted by Price (Descending)
+
+- **Task:** Write an aggregation query to display only the `name` and `price` of each product, sorted by `price` from highest to lowest.
+- **Hint:** Use `$project` and `$sort`.
+- **Note:** Do not include the `_id` field.
+- **Expected Output:**
+
+### 🔹 Command:
+```js
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      price: 1
+    }
+  },
+  {
+    $sort: { price: -1 }
+  }
+]);
+{
+  name: 'Laptop Pro',
+  price: 1200
+}
+{
+  name: 'Espresso Machine',
+  price: 250
+}
+{
+  name: 'Smartwatch',
+  price: 199
+}
+{
+  name: 'Bluetooth Speaker',
+  price: 80
+}
+{
+  name: 'Mechanical Keyboard',
+  price: 75
+}
+{
+  name: 'Denim Jeans',
+  price: 60
+}
+{
+  name: 'Leather Wallet',
+  price: 45
+}
+{
+  name: 'Yoga Mat',
+  price: 30
+}
+{
+  name: 'Wireless Mouse',
+  price: 25
+}
+{
+  name: 'Cotton T-Shirt',
+  price: 20
+}
+
 
